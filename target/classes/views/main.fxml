@@ -18,11 +18,11 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #1b1a1a;" stylesheets="@main.css">
+      <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #1b1a1a;" stylesheets="@../CSS/main.css">
          <children>
             <Pane prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #413f3f;">
                <children>
-                  <Label alignment="CENTER" layoutY="150.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white;" styleClass="buttonLabel" stylesheets="@main.css" text="HOME" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="150.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white;" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="HOME" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>

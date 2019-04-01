@@ -1,0 +1,31 @@
+/*
+* Button Properties
+* Author: Evohunt
+*/
+.loginButton {
+    -fx-border-color: white;
+    -fx-border-radius: 4;
+}
+
+.loginButton:hover {
+    -fx-background-color: #2b2929;
+}
+
+.loginButton:pressed {
+    -fx-background-color: #403d3d;
+}
+
+.registerButton {
+    -fx-border-color: white;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-background-color: #0acb2e;
+}
+
+.registerButton:hover {
+    -fx-background-color: #0ae032;
+}
+
+.registerButton:pressed {
+    -fx-background-color: #0bf036;
+}
