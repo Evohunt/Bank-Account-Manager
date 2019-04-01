@@ -2,6 +2,8 @@
   <dictionary name="evohu">
     <words>
       <w>evohunt</w>
+      <w>jdbc</w>
+      <w>sqlserver</w>
     </words>
   </dictionary>
 </component>
