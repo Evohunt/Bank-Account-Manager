@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.TransferController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.ProfileController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -39,7 +38,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="275.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white;" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="TRANSFER" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="275.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="TRANSFER" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -55,7 +54,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="175.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PROFILE" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="175.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white;" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PROFILE" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -65,41 +64,55 @@
                   </Label>
                </children>
             </Pane>
-            <TextField layoutX="404.0" layoutY="159.0" prefHeight="40.0" prefWidth="261.0">
+            <TextField layoutX="270.0" layoutY="65.0" prefHeight="40.0" prefWidth="261.0" promptText="First name" text="Alexandru">
                <font>
-                  <Font name="Arial" size="16.0" />
+                  <Font name="Arial" size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="404.0" layoutY="209.0" prefHeight="40.0" prefWidth="261.0">
+            <TextField layoutX="270.0" layoutY="165.0" prefHeight="40.0" prefWidth="261.0" promptText="Address" text="Strada Craiovei, Nr. 4">
                <font>
-                  <Font name="Arial" size="16.0" />
+                  <Font name="Arial" size="14.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="223.0" layoutY="159.0" prefHeight="41.0" prefWidth="181.0" text="Destination account" textFill="WHITE">
+            <TextField layoutX="270.0" layoutY="215.0" prefHeight="40.0" prefWidth="261.0" promptText="Username" text="APopescu">
                <font>
-                  <Font name="Arial Bold" size="16.0" />
+                  <Font name="Arial" size="14.0" />
                </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="223.0" layoutY="209.0" prefHeight="41.0" prefWidth="181.0" text="Amount" textFill="WHITE">
+            </TextField>
+            <TextField layoutX="270.0" layoutY="265.0" prefHeight="40.0" prefWidth="261.0" promptText="Email" text="apopescu@email.ro">
                <font>
-                  <Font name="Arial Bold" size="16.0" />
+                  <Font name="Arial" size="14.0" />
                </font>
-            </Label>
-            <ChoiceBox layoutX="404.0" layoutY="259.0" prefHeight="40.0" prefWidth="261.0" />
-            <Label alignment="CENTER" layoutX="223.0" layoutY="259.0" prefHeight="41.0" prefWidth="181.0" text="Current account" textFill="WHITE">
+            </TextField>
+            <Label alignment="CENTER" layoutX="531.0" layoutY="334.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="EDIT PROFILE" textFill="WHITE">
                <font>
-                  <Font name="Arial Bold" size="16.0" />
-               </font>
-            </Label>
-            <ChoiceBox layoutX="675.0" layoutY="209.0" prefHeight="40.0" prefWidth="111.0" />
-            <Label alignment="CENTER" layoutX="600.0" layoutY="357.0" prefHeight="55.0" prefWidth="150.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="TRANSFER" textFill="WHITE">
-               <font>
-                  <Font name="Impact" size="25.0" />
+                  <Font name="Impact" size="22.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
+            <Label alignment="CENTER" layoutX="531.0" layoutY="384.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="TRANSACTION HISTORY" textFill="WHITE">
+               <font>
+                  <Font name="Impact" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label alignment="CENTER" layoutX="531.0" layoutY="434.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="CHANGE PASSWORD" textFill="WHITE">
+               <font>
+                  <Font name="Impact" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <TextField layoutX="270.0" layoutY="115.0" prefHeight="40.0" prefWidth="261.0" promptText="Last name" text="Popescu">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </children>

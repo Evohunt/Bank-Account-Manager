@@ -7,14 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane prefHeight="600.0" prefWidth="400.0" styleClass="mainBackground" stylesheets="@../CSS/backgrounds.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.RegisterController">
    <children>
-      <Label alignment="CENTER" layoutX="70.0" layoutY="64.0" prefHeight="41.0" prefWidth="261.0" text="Bank Account Manager" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="70.0" layoutY="95.0" prefHeight="41.0" prefWidth="261.0" text="Bank Account Manager" textFill="WHITE">
          <font>
             <Font name="Impact" size="25.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="70.0" layoutY="482.0" prefHeight="55.0" prefWidth="261.0" styleClass="registerButton" stylesheets="@../CSS/buttons.css" text="REGISTER" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="70.0" layoutY="450.0" prefHeight="55.0" prefWidth="261.0" styleClass="registerButton" stylesheets="@../CSS/buttons.css" text="REGISTER" textFill="WHITE">
          <font>
             <Font name="Impact" size="25.0" />
          </font>
@@ -22,32 +23,27 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <TextField layoutX="70.0" layoutY="262.0" prefHeight="40.0" prefWidth="261.0" promptText="Username">
+      <TextField layoutX="70.0" layoutY="250.0" prefHeight="40.0" prefWidth="261.0" promptText="Username">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </TextField>
-      <PasswordField layoutX="70.0" layoutY="412.0" prefHeight="40.0" prefWidth="261.0" promptText="Password">
+      <PasswordField layoutX="70.0" layoutY="400.0" prefHeight="40.0" prefWidth="261.0" promptText="Password">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </PasswordField>
-      <TextField layoutX="70.0" layoutY="162.0" prefHeight="40.0" prefWidth="261.0" promptText="First name">
+      <TextField layoutX="70.0" layoutY="200.0" prefHeight="40.0" prefWidth="261.0" promptText="Full name">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="70.0" layoutY="312.0" prefHeight="40.0" prefWidth="261.0" promptText="Email">
+      <TextField layoutX="70.0" layoutY="300.0" prefHeight="40.0" prefWidth="261.0" promptText="Email">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="70.0" layoutY="362.0" prefHeight="40.0" prefWidth="261.0" promptText="Address">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="70.0" layoutY="212.0" prefHeight="40.0" prefWidth="261.0" promptText="Last name">
+      <TextField layoutX="70.0" layoutY="350.0" prefHeight="40.0" prefWidth="261.0" promptText="Address">
          <font>
             <Font name="Arial" size="16.0" />
          </font>

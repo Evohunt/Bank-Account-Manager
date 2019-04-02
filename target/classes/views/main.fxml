@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Manager.controller.MainController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.MainController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -18,11 +17,11 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #1b1a1a;" stylesheets="@../CSS/main.css">
+      <AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="mainBackground" stylesheets="@../CSS/backgrounds.css">
          <children>
-            <Pane prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #413f3f;">
+            <Pane prefHeight="500.0" prefWidth="200.0" styleClass="sidePanel" stylesheets="@../CSS/backgrounds.css">
                <children>
-                  <Label alignment="CENTER" layoutY="150.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white;" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="HOME" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="125.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white;" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="HOME" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -30,7 +29,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" text="ACCOUNTS" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="225.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="ACCOUNTS" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -38,7 +37,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="250.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" text="TRANSFER" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="275.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="TRANSFER" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -46,7 +45,15 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="300.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" text="PAY" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="325.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PAY" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="28.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="175.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PROFILE" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>

@@ -1,0 +1,11 @@
+/*
+* Background Properties
+* Author: Evohunt
+*/
+.mainBackground {
+    -fx-background-color: #1b1a1a;
+}
+
+.sidePanel {
+    -fx-background-color: #413f3f;
+}
