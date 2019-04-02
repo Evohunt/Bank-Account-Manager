@@ -10,9 +10,9 @@ public class DatabaseHandler extends Configs {
 
         String connectionString = "jdbc:sqlserver://" + dbHost + ":" + dbPort
                 + ";database=" + dbName
-                + ";user=" + dbUser + "@evohunt"
+                + ";user=" + dbUser + "@"
                 + ";password=" + dbPass
-                + ";encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+                + "";
 
         return DriverManager.getConnection(connectionString, dbUser, dbPass);
     }
