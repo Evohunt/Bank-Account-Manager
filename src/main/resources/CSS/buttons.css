@@ -57,3 +57,18 @@
 .backButton:pressed {
     -fx-background-color: #e81b1b;
 }
+
+.createAccountButton {
+    -fx-border-color: white;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-background-color: #0acb2e;
+}
+
+.createAccountButton:hover {
+    -fx-background-color: #0ae032;
+}
+
+.createAccountButton:pressed {
+    -fx-background-color: #0bf036;
+}
