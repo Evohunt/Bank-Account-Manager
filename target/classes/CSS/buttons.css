@@ -42,3 +42,33 @@
 .regularButton:pressed {
     -fx-background-color: #403d3d;
 }
+
+.backButton {
+    -fx-background-radius: 6;
+    -fx-background-color: #cb1c1c;
+    -fx-border-color: white;
+    -fx-border-radius: 4;
+}
+
+.backButton:hover {
+    -fx-background-color: #de1818;
+}
+
+.backButton:pressed {
+    -fx-background-color: #e81b1b;
+}
+
+.createAccountButton {
+    -fx-border-color: white;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-background-color: #0acb2e;
+}
+
+.createAccountButton:hover {
+    -fx-background-color: #0ae032;
+}
+
+.createAccountButton:pressed {
+    -fx-background-color: #0bf036;
+}
