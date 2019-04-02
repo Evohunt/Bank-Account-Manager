@@ -29,7 +29,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" text="ACCOUNTS" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="ACCOUNTS" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -37,7 +37,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="250.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" text="TRANSFER" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="250.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="TRANSFER" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -45,7 +45,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="300.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" text="PAY" textFill="WHITE">
+                  <Label alignment="CENTER" layoutY="300.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PAY" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>

@@ -29,3 +29,16 @@
 .registerButton:pressed {
     -fx-background-color: #0bf036;
 }
+
+.regularButton {
+    -fx-border-color: white;
+    -fx-border-radius: 4;
+}
+
+.regularButton:hover {
+    -fx-background-color: #2b2929;
+}
+
+.regularButton:pressed {
+    -fx-background-color: #403d3d;
+}
