@@ -44,7 +44,7 @@
 }
 
 .backButton {
-    -fx-background-radius: 4;
+    -fx-background-radius: 6;
     -fx-background-color: #cb1c1c;
     -fx-border-color: white;
     -fx-border-radius: 4;
