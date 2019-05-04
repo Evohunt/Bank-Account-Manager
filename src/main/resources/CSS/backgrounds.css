@@ -22,3 +22,10 @@
 .scroll-pane {
     -fx-background-color: #1b1a1a;
 }
+
+.popUpPane {
+    -fx-background-color: #1b1a1a;
+    -fx-border-color: WHITE;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}

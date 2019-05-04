@@ -147,4 +147,18 @@ public class DatabaseHandler extends Configs {
 
     }
 
+    public void editUserPassword(String userName, String password) throws SQLException, ClassNotFoundException {
+
+        String query = "UPDATE " + Const.USERS_TABLE + " SET "
+                + Const.USERS_PASSWORD + " = ?"
+                + " WHERE (" + Const.USERS_USERNAME + " = ?)";
+
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setString(1, password);
+        preparedStatement.setString(2, userName);
+
+        preparedStatement.executeUpdate();
+
+    }
+
 }

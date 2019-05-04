@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -80,7 +81,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="changePasswordButton" alignment="CENTER" layoutX="531.0" layoutY="434.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="CHANGE PASSWORD" textFill="WHITE">
+            <Label fx:id="changePasswordButton" alignment="CENTER" layoutX="531.0" layoutY="434.0" onMouseClicked="#promptChangePassword" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="CHANGE PASSWORD" textFill="WHITE">
                <font>
                   <Font name="Impact" size="22.0" />
                </font>
@@ -157,6 +158,41 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
+            <Pane fx:id="popUpPane" layoutX="252.0" layoutY="100.0" prefHeight="300.0" prefWidth="500.0" styleClass="popUpPane" stylesheets="@../CSS/backgrounds.css" visible="false">
+               <children>
+                  <PasswordField fx:id="txtOldPassword" layoutX="42.0" layoutY="54.0" prefHeight="40.0" prefWidth="332.0" promptText="Old password">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </PasswordField>
+                  <PasswordField fx:id="txtNewPassword" layoutX="42.0" layoutY="104.0" prefHeight="40.0" prefWidth="332.0" promptText="New password">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </PasswordField>
+                  <PasswordField fx:id="txtConfirmPassword" layoutX="42.0" layoutY="154.0" prefHeight="40.0" prefWidth="332.0" promptText="Confirm new password">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </PasswordField>
+                  <Label fx:id="passwordChangeSave" alignment="CENTER" layoutX="359.0" layoutY="222.0" onMouseClicked="#savePasswordChange" prefHeight="55.0" prefWidth="121.0" styleClass="saveButton" stylesheets="@../CSS/buttons.css" text="SAVE" textFill="#17c216">
+                     <font>
+                        <Font name="Impact" size="25.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="passwordChangeCancel" alignment="CENTER" layoutX="221.0" layoutY="222.0" onMouseClicked="#cancelPasswordChange" prefHeight="55.0" prefWidth="121.0" styleClass="cancelButton" stylesheets="@../CSS/buttons.css" text="CANCEL" textFill="#b81212">
+                     <font>
+                        <Font name="Impact" size="25.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>

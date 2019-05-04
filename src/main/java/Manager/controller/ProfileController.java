@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
 import Manager.model.User;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-public class ProfileController {
+public class ProfileController extends ShowScreenController {
 
     @FXML
     private ResourceBundle resources;
@@ -63,11 +64,101 @@ public class ProfileController {
     @FXML
     private Label changePasswordButton;
 
+    @FXML
+    private Pane popUpPane;
+
+    @FXML
+    private PasswordField txtOldPassword;
+
+    @FXML
+    private PasswordField txtNewPassword;
+
+    @FXML
+    private PasswordField txtConfirmPassword;
+
+    @FXML
+    private Label passwordChangeSave;
+
+    @FXML
+    private Label passwordChangeCancel;
+
     private DatabaseHandler databaseHandler;
 
+    private void resetPasswordFields() {
+        txtOldPassword.setText("");
+        txtNewPassword.setText("");
+        txtConfirmPassword.setText("");
+    }
+
+    @FXML
+    void cancelPasswordChange(MouseEvent event) {
+
+        popUpPane.setVisible(false);
+        changePasswordButton.setVisible(true);
+        transactionHistoryButton.setVisible(true);
+        editProfileButton.setVisible(true);
+        resetPasswordFields();
+
+    }
+
+    @FXML
+    void savePasswordChange(MouseEvent event) throws SQLException, ClassNotFoundException {
+
+        String userPassword = "";
+        ResultSet userResult = databaseHandler.getUserByUsername(new User(profileUsername.getText()));
+
+        while (userResult.next()) {
+            userPassword = userResult.getString("password");
+        }
+
+        if (!txtOldPassword.getText().equals("") && !txtNewPassword.getText().equals("") && !txtConfirmPassword.getText().equals("")) {
+
+            if (userPassword.equals(txtOldPassword.getText()) && txtNewPassword.getText().equals(txtConfirmPassword.getText())) {
+
+                databaseHandler.editUserPassword(profileUsername.getText(), txtConfirmPassword.getText());
+
+                popUpPane.setVisible(false);
+                editProfileButton.setVisible(true);
+                transactionHistoryButton.setVisible(true);
+                changePasswordButton.setVisible(true);
+
+                showScreen(txtOldPassword, "/views/login.fxml");
+
+            } else if (!userPassword.equals(txtOldPassword.getText())) {
+
+                Shaker shaker = new Shaker(txtOldPassword);
+                shaker.shake();
+
+            } else if (!txtNewPassword.getText().equals(txtConfirmPassword.getText())) {
+
+                Shaker newPasswordShaker = new Shaker(txtNewPassword);
+                Shaker confirmPasswordShaker = new Shaker(txtConfirmPassword);
+                newPasswordShaker.shake();
+                confirmPasswordShaker.shake();
+
+            }
+
+        } else {
+
+            Shaker oldPasswordShaker = new Shaker(txtOldPassword);
+            Shaker newPasswordShaker = new Shaker(txtNewPassword);
+            Shaker confirmPasswordShaker = new Shaker(txtConfirmPassword);
+            oldPasswordShaker.shake();
+            newPasswordShaker.shake();
+            confirmPasswordShaker.shake();
+
+        }
+
+    }
 
     @FXML
     void promptChangePassword(MouseEvent event) {
+
+        popUpPane.setVisible(true);
+        changePasswordButton.setVisible(false);
+        transactionHistoryButton.setVisible(false);
+        editProfileButton.setVisible(false);
+        resetPasswordFields();
 
     }
 
