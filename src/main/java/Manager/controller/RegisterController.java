@@ -43,7 +43,17 @@ public class RegisterController extends ShowScreenController {
     @FXML
     private TextField registerLastName;
 
+    @FXML
+    private Label cancelLoginButton;
+
     private DatabaseHandler databaseHandler;
+
+    @FXML
+    void cancelLogin(MouseEvent event) {
+
+        showScreen(cancelLoginButton, "/views/startup.fxml");
+
+    }
 
     @FXML
     void registerUser(MouseEvent event) {

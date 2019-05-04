@@ -31,8 +31,16 @@ public class LoginController extends ShowScreenController {
     @FXML
     private PasswordField loginPassword;
 
+    @FXML
+    private Label cancelLoginButton;
+
     private DatabaseHandler databaseHandler;
     private static User user = new User();
+
+    @FXML
+    void cancelLogin(MouseEvent event) {
+        showScreen(cancelLoginButton, "/views/startup.fxml");
+    }
 
     @FXML
     void loginUser(MouseEvent event) {

@@ -20,13 +20,25 @@ import javafx.scene.layout.Pane;
 public class ProfileController extends ShowScreenController {
 
     @FXML
-    private ResourceBundle resources;
+    private Label homeButton;
 
     @FXML
-    private URL location;
+    private Label accountsButton;
+
+    @FXML
+    private Label transferButton;
+
+    @FXML
+    private Label payButton;
 
     @FXML
     private Label editProfileButton;
+
+    @FXML
+    private Label transactionHistoryButton;
+
+    @FXML
+    private Label changePasswordButton;
 
     @FXML
     private Label profileUsername;
@@ -59,12 +71,6 @@ public class ProfileController extends ShowScreenController {
     private Label cancelEditProfileButton;
 
     @FXML
-    private Label transactionHistoryButton;
-
-    @FXML
-    private Label changePasswordButton;
-
-    @FXML
     private Pane popUpPane;
 
     @FXML
@@ -83,6 +89,34 @@ public class ProfileController extends ShowScreenController {
     private Label passwordChangeCancel;
 
     private DatabaseHandler databaseHandler;
+
+    @FXML
+    void gotoHomeScreen(MouseEvent event) {
+
+        showScreen(accountsButton, "/views/main.fxml");
+
+    }
+
+    @FXML
+    void gotoPayScreen(MouseEvent event) {
+
+        showScreen(accountsButton, "/views/pay.fxml");
+
+    }
+
+    @FXML
+    void gotoTransferScreen(MouseEvent event) {
+
+        showScreen(accountsButton, "/views/transfer.fxml");
+
+    }
+
+    @FXML
+    void gotoAccountsScreen(MouseEvent event) {
+
+        showScreen(accountsButton, "/views/accounts.fxml");
+
+    }
 
     private void resetPasswordFields() {
         txtOldPassword.setText("");

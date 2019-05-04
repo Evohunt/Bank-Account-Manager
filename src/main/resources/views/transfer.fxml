@@ -23,7 +23,7 @@
          <children>
             <Pane prefHeight="500.0" prefWidth="200.0" styleClass="sidePanel" stylesheets="@../CSS/backgrounds.css">
                <children>
-                  <Label alignment="CENTER" layoutY="125.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="HOME" textFill="WHITE">
+                  <Label fx:id="homeButton" alignment="CENTER" layoutY="125.0" onMouseClicked="#gotoHomeScreen" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="HOME" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -31,7 +31,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="225.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="ACCOUNTS" textFill="WHITE">
+                  <Label fx:id="accountsButton" alignment="CENTER" layoutY="225.0" onMouseClicked="#gotoAccountsScreen" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="ACCOUNTS" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -47,7 +47,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="325.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PAY" textFill="WHITE">
+                  <Label fx:id="payButton" alignment="CENTER" layoutY="325.0" onMouseClicked="#gotoPayScreen" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PAY" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>
@@ -55,7 +55,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label alignment="CENTER" layoutY="175.0" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PROFILE" textFill="WHITE">
+                  <Label fx:id="profileButton" alignment="CENTER" layoutY="175.0" onMouseClicked="#gotoProfileScreen" prefHeight="50.0" prefWidth="200.0" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PROFILE" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
                      </font>

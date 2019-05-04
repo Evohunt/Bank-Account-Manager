@@ -32,5 +32,13 @@
             <Font name="Arial" size="16.0" />
          </font>
       </PasswordField>
+      <Label fx:id="cancelLoginButton" alignment="CENTER" layoutX="14.0" layoutY="14.0" onMouseClicked="#cancelLogin" prefHeight="40.0" prefWidth="130.0" styleClass="cancelButton" stylesheets="@../CSS/buttons.css" text="CANCEL" textFill="#b81212">
+         <font>
+            <Font name="Impact" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
    </children>
 </AnchorPane>

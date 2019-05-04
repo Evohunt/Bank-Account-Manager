@@ -15,7 +15,37 @@ public class MainController extends ShowScreenController {
     private URL location;
 
     @FXML
+    private Label accountsButton;
+
+    @FXML
+    private Label transferButton;
+
+    @FXML
+    private Label payButton;
+
+    @FXML
     private Label profileButton;
+
+    @FXML
+    void gotoAccountsScreen(MouseEvent event) {
+
+        showScreen(profileButton, "/views/accounts.fxml");
+
+    }
+
+    @FXML
+    void gotoPayScreen(MouseEvent event) {
+
+        showScreen(profileButton, "/views/pay.fxml");
+
+    }
+
+    @FXML
+    void gotoTransferScreen(MouseEvent event) {
+
+        showScreen(profileButton, "/views/transfer.fxml");
+
+    }
 
     @FXML
     void gotoProfileScreen(MouseEvent event) {
