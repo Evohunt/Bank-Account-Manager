@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Manager.Triplet.SimpleTriplet;
+import Manager.animations.Fader;
 import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
 import Manager.enums.Currency;
@@ -137,8 +138,56 @@ public class AccountsController extends ShowScreenController {
     @FXML
     private Label logoutButton;
 
+    @FXML
+    private Label lblMaxAccountsReached;
+
+    @FXML
+    private Label deleteButton1;
+
+    @FXML
+    private Label deleteButton2;
+
+    @FXML
+    private Label deleteButton3;
+
+    @FXML
+    private Label deleteButton4;
+
+    @FXML
+    private Label deleteButton5;
+
     private DatabaseHandler databaseHandler;
     private User user;
+
+    @FXML
+    void deleteAccount1(MouseEvent event) throws SQLException, ClassNotFoundException {
+        databaseHandler.deleteAccount(accountName1.getText());
+        initialize();
+    }
+
+    @FXML
+    void deleteAccount2(MouseEvent event) throws SQLException, ClassNotFoundException {
+        databaseHandler.deleteAccount(accountName2.getText());
+        initialize();
+    }
+
+    @FXML
+    void deleteAccount3(MouseEvent event) throws SQLException, ClassNotFoundException {
+        databaseHandler.deleteAccount(accountName3.getText());
+        initialize();
+    }
+
+    @FXML
+    void deleteAccount4(MouseEvent event) throws SQLException, ClassNotFoundException {
+        databaseHandler.deleteAccount(accountName4.getText());
+        initialize();
+    }
+
+    @FXML
+    void deleteAccount5(MouseEvent event) throws SQLException, ClassNotFoundException {
+        databaseHandler.deleteAccount(accountName5.getText());
+        initialize();
+    }
 
     @FXML
     void logoutUser(MouseEvent event) {
@@ -172,7 +221,8 @@ public class AccountsController extends ShowScreenController {
 
         if (numberOfAccounts == 5) {
 
-
+            Shaker shaker = new Shaker(lblMaxAccountsReached);
+            shaker.shake();
 
         } else {
 
@@ -283,6 +333,15 @@ public class AccountsController extends ShowScreenController {
 
     }
 
+    private void resetAccountLabels() {
+
+        accountPane1.setVisible(false);
+        accountPane2.setVisible(false);
+        accountPane3.setVisible(false);
+        accountPane4.setVisible(false);
+        accountPane5.setVisible(false);
+
+    }
 
     @FXML
     void initialize() throws SQLException {
@@ -311,6 +370,7 @@ public class AccountsController extends ShowScreenController {
         }
 
         accountBalanceAdd.setText("");
+
         int numberOfAccounts = 0;
         SimpleTriplet<String, String, String> triplet = new SimpleTriplet<>();
         SimpleTriplet[] arrayOfTriplets = new SimpleTriplet[6];
@@ -322,6 +382,17 @@ public class AccountsController extends ShowScreenController {
             triplet.setThird(accountsResult.getString("accountCurrency"));
             arrayOfTriplets[numberOfAccounts] = new SimpleTriplet<>(triplet);
             numberOfAccounts++;
+
+        }
+
+        resetAccountLabels();
+        if (numberOfAccounts == 5) {
+
+            lblMaxAccountsReached.setVisible(true);
+
+        } else {
+
+            lblMaxAccountsReached.setVisible(false);
 
         }
 
@@ -347,7 +418,6 @@ public class AccountsController extends ShowScreenController {
             }
 
         }
-
 
     }
 }

@@ -218,4 +218,16 @@ public class DatabaseHandler extends Configs {
 
     }
 
+    public void deleteAccount(String accountName) throws SQLException, ClassNotFoundException {
+
+        String query = "DELETE FROM " + Const.ACCOUNTS_TABLE
+                + " WHERE (" + Const.ACCOUNTS_NAME + " = ?)";
+
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setString(1, accountName);
+
+        preparedStatement.executeUpdate();
+
+    }
+
 }
