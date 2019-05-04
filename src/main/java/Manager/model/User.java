@@ -2,6 +2,7 @@ package Manager.model;
 
 public class User {
 
+    private int userId;
     private String firstName;
     private String lastName;
     private String userName;
@@ -70,5 +71,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

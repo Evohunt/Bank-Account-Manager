@@ -88,7 +88,17 @@ public class ProfileController extends ShowScreenController {
     @FXML
     private Label passwordChangeCancel;
 
+    @FXML
+    private Label logoutButton;
+
     private DatabaseHandler databaseHandler;
+
+    @FXML
+    void logoutUser(MouseEvent event) {
+
+        showScreen(logoutButton, "/views/startup.fxml");
+
+    }
 
     @FXML
     void gotoHomeScreen(MouseEvent event) {

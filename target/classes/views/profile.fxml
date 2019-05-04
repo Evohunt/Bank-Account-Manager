@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.ProfileController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.ProfileController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -58,6 +58,14 @@
                   <Label alignment="CENTER" layoutY="175.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white;" styleClass="buttonLabel" stylesheets="@../CSS/main.css" text="PROFILE" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="28.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="logoutButton" alignment="CENTER" layoutX="14.0" layoutY="14.0" onMouseClicked="#logoutUser" prefHeight="32.0" prefWidth="99.0" styleClass="cancelButton" stylesheets="@../CSS/buttons.css" text="LOGOUT" textFill="#b81212">
+                     <font>
+                        <Font name="Impact" size="20.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />

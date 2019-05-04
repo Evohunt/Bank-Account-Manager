@@ -1,5 +1,6 @@
 package Manager.database;
 
+import Manager.model.Account;
 import Manager.model.User;
 
 import java.sql.*;
@@ -158,6 +159,62 @@ public class DatabaseHandler extends Configs {
         preparedStatement.setString(2, userName);
 
         preparedStatement.executeUpdate();
+
+    }
+
+    public ResultSet getAccountsByUser(User user) {
+
+        ResultSet resultSet = null;
+
+        if (!user.getUserName().equals("") || !user.getPassword().equals("")) {
+
+            String query = "SELECT * FROM " + Const.ACCOUNTS_TABLE + " WHERE "
+                    + Const.ACCOUNTS_USERID + "=?";
+
+            try {
+
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+                preparedStatement.setString(1, Integer.toString(user.getUserId()));
+
+                resultSet = preparedStatement.executeQuery();
+
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+
+            // Input Validation
+
+        }
+
+        return resultSet;
+
+    }
+
+    public void createAccount(User user, Account account) {
+
+        String insert = "INSERT INTO " + Const.ACCOUNTS_TABLE
+                + "(" + Const.ACCOUNTS_NAME
+                + ", " + Const.ACCOUNTS_BALANCE
+                + ", " + Const.ACCOUNTS_CURRENCY
+                + ", " + Const.ACCOUNTS_USERID
+                + ")" + " VALUES(?, ?, ?, ?)";
+
+        try {
+
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setString(1, account.getName());
+            preparedStatement.setString(2, Double.toString(account.getBalance()));
+            preparedStatement.setString(3, account.getCurrency().toString());
+            preparedStatement.setString(4, Integer.toString(user.getUserId()));
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
