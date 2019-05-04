@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="mainBackground" stylesheets="@../CSS/backgrounds.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.StartupController">
    <children>
       <Label alignment="CENTER" layoutX="170.0" layoutY="95.0" prefHeight="41.0" prefWidth="261.0" text="Bank Account Manager" textFill="WHITE">
@@ -13,7 +12,7 @@
             <Font name="Impact" size="25.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="170.0" layoutY="200.0" prefHeight="55.0" prefWidth="261.0" styleClass="loginButton" stylesheets="@../CSS/buttons.css" text="LOGIN" textFill="WHITE">
+      <Label fx:id="loginButton" alignment="CENTER" layoutX="170.0" layoutY="200.0" onMouseClicked="#gotoLoginScreen" prefHeight="55.0" prefWidth="261.0" styleClass="loginButton" stylesheets="@../CSS/buttons.css" text="LOGIN" textFill="WHITE">
          <font>
             <Font name="Impact" size="25.0" />
          </font>
@@ -21,7 +20,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label alignment="CENTER" layoutX="170.0" layoutY="258.0" prefHeight="55.0" prefWidth="261.0" styleClass="registerButton" stylesheets="@../CSS/buttons.css" text="REGISTER" textFill="WHITE">
+      <Label fx:id="registerButton" alignment="CENTER" layoutX="170.0" layoutY="258.0" onMouseClicked="#gotoRegisterScreen" prefHeight="55.0" prefWidth="261.0" styleClass="registerButton" stylesheets="@../CSS/buttons.css" text="REGISTER" textFill="WHITE">
          <font>
             <Font name="Impact" size="25.0" />
          </font>

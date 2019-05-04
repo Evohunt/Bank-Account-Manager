@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="mainBackground" stylesheets="@../CSS/backgrounds.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.LoginController">
    <children>
       <Label alignment="CENTER" layoutX="170.0" layoutY="73.0" prefHeight="41.0" prefWidth="261.0" text="Bank Account Manager" textFill="WHITE">
@@ -15,7 +14,7 @@
             <Font name="Impact" size="25.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="170.0" layoutY="272.0" prefHeight="55.0" prefWidth="261.0" styleClass="loginButton" stylesheets="@../CSS/buttons.css" text="LOGIN" textFill="WHITE">
+      <Label fx:id="loginButton" alignment="CENTER" layoutX="170.0" layoutY="272.0" onMouseClicked="#loginUser" prefHeight="55.0" prefWidth="261.0" styleClass="loginButton" stylesheets="@../CSS/buttons.css" text="LOGIN" textFill="WHITE">
          <font>
             <Font name="Impact" size="25.0" />
          </font>
@@ -23,12 +22,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <TextField layoutX="170.0" layoutY="172.0" prefHeight="40.0" prefWidth="261.0" promptText="Username">
+      <TextField fx:id="loginUsername" layoutX="170.0" layoutY="172.0" prefHeight="40.0" prefWidth="261.0" promptText="Username">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </TextField>
-      <PasswordField layoutX="170.0" layoutY="222.0" prefHeight="40.0" prefWidth="261.0" promptText="Password">
+      <PasswordField fx:id="loginPassword" layoutX="170.0" layoutY="222.0" prefHeight="40.0" prefWidth="261.0" promptText="Password">
          <font>
             <Font name="Arial" size="16.0" />
          </font>

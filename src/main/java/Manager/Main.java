@@ -1,4 +1,4 @@
-package Manager.model;
+package Manager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +10,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/views/main.fxml"));
-        primaryStage.setTitle("Bank Account Manager");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/startup.fxml"));
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }
 
