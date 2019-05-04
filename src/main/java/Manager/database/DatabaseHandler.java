@@ -99,4 +99,52 @@ public class DatabaseHandler extends Configs {
 
     }
 
+    public ResultSet getUserByUsername(User user) {
+
+        ResultSet resultSet = null;
+
+        if (!user.getUserName().equals("") || !user.getPassword().equals("")) {
+
+            String query = "SELECT * FROM " + Const.USERS_TABLE + " WHERE "
+                    + Const.USERS_USERNAME + "=?";
+
+            try {
+
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+                preparedStatement.setString(1, user.getUserName());
+
+                resultSet = preparedStatement.executeQuery();
+
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+
+            // Input Validation
+
+        }
+
+        return resultSet;
+
+    }
+
+    public void editUser(User user) throws SQLException, ClassNotFoundException {
+
+        String query = "UPDATE " + Const.USERS_TABLE + " SET "
+                + Const.USERS_FIRSTNAME + " = ?"
+                + ", " + Const.USERS_LASTNAME + " = ?"
+                + ", " + Const.USERS_ADDRESS + " = ?"
+                + " WHERE (" + Const.USERS_USERNAME + " = ?)";
+
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setString(1, user.getFirstName());
+        preparedStatement.setString(2, user.getLastName());
+        preparedStatement.setString(3, user.getAddress());
+        preparedStatement.setString(4, user.getUserName());
+
+        preparedStatement.executeUpdate();
+
+    }
+
 }

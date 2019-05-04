@@ -70,6 +70,10 @@ public class LoginController extends ShowScreenController {
 
     }
 
+    public User getUser() {
+        return user;
+    }
+
     @FXML
     void initialize() {
 

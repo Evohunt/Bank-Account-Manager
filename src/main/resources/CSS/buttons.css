@@ -72,3 +72,35 @@
 .createAccountButton:pressed {
     -fx-background-color: #0bf036;
 }
+
+/*
+* SAVE BUTTON
+*/
+.saveButton {
+    -fx-border-color: #17c216;
+    -fx-border-radius: 4;
+}
+
+.saveButton:hover {
+    -fx-background-color: #2b2929;
+}
+
+.saveButton:pressed {
+    -fx-background-color: #403d3d;
+}
+
+/*
+* CANCEL BUTTON
+*/
+.cancelButton {
+    -fx-border-color: #cd1010;
+    -fx-border-radius: 4;
+}
+
+.cancelButton:hover {
+    -fx-background-color: #2b2929;
+}
+
+.cancelButton:pressed {
+    -fx-background-color: #403d3d;
+}

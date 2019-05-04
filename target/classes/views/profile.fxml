@@ -64,27 +64,7 @@
                   </Label>
                </children>
             </Pane>
-            <TextField layoutX="270.0" layoutY="65.0" prefHeight="40.0" prefWidth="261.0" promptText="First name" text="Alexandru">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="270.0" layoutY="165.0" prefHeight="40.0" prefWidth="261.0" promptText="Address" text="Strada Craiovei, Nr. 4">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="270.0" layoutY="215.0" prefHeight="40.0" prefWidth="261.0" promptText="Username" text="APopescu">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="270.0" layoutY="265.0" prefHeight="40.0" prefWidth="261.0" promptText="Email" text="apopescu@email.ro">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextField>
-            <Label alignment="CENTER" layoutX="531.0" layoutY="334.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="EDIT PROFILE" textFill="WHITE">
+            <Label fx:id="editProfileButton" alignment="CENTER" layoutX="531.0" layoutY="334.0" onMouseClicked="#promptEditProfile" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="EDIT PROFILE" textFill="WHITE">
                <font>
                   <Font name="Impact" size="22.0" />
                </font>
@@ -92,7 +72,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label alignment="CENTER" layoutX="531.0" layoutY="384.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="TRANSACTION HISTORY" textFill="WHITE">
+            <Label fx:id="transactionHistoryButton" alignment="CENTER" layoutX="531.0" layoutY="384.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="TRANSACTION HISTORY" textFill="WHITE">
                <font>
                   <Font name="Impact" size="22.0" />
                </font>
@@ -100,7 +80,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label alignment="CENTER" layoutX="531.0" layoutY="434.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="CHANGE PASSWORD" textFill="WHITE">
+            <Label fx:id="changePasswordButton" alignment="CENTER" layoutX="531.0" layoutY="434.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="CHANGE PASSWORD" textFill="WHITE">
                <font>
                   <Font name="Impact" size="22.0" />
                </font>
@@ -108,11 +88,75 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <TextField layoutX="270.0" layoutY="115.0" prefHeight="40.0" prefWidth="261.0" promptText="Last name" text="Popescu">
+            <Label alignment="CENTER_RIGHT" layoutX="213.0" layoutY="105.0" prefHeight="29.0" prefWidth="150.0" text="Username:" textFill="WHITE">
                <font>
-                  <Font name="Arial" size="14.0" />
+                  <Font name="Arial Bold" size="16.0" />
                </font>
-            </TextField>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="213.0" layoutY="144.0" prefHeight="29.0" prefWidth="150.0" text="First name:" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="213.0" layoutY="183.0" prefHeight="29.0" prefWidth="150.0" text="Last name:" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="213.0" layoutY="222.0" prefHeight="29.0" prefWidth="150.0" text="Address:" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="213.0" layoutY="261.0" prefHeight="29.0" prefWidth="150.0" text="Email:" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="profileUsername" layoutX="367.0" layoutY="105.0" prefHeight="29.0" prefWidth="380.0" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="profileFirstName" layoutX="368.0" layoutY="144.0" prefHeight="29.0" prefWidth="380.0" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="profileLastName" layoutX="368.0" layoutY="183.0" prefHeight="29.0" prefWidth="380.0" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="profileAddress" layoutX="368.0" layoutY="222.0" prefHeight="29.0" prefWidth="380.0" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="profileEmail" layoutX="368.0" layoutY="261.0" prefHeight="29.0" prefWidth="380.0" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="profileLastNameEdit" layoutX="368.0" layoutY="185.0" prefWidth="380.0" visible="false" />
+            <TextField fx:id="profileFirstNameEdit" layoutX="368.0" layoutY="146.0" prefWidth="380.0" visible="false" />
+            <TextField fx:id="profileAddressEdit" layoutX="368.0" layoutY="224.0" prefWidth="380.0" visible="false" />
+            <Label fx:id="saveEditProfileButton" alignment="CENTER" layoutX="638.0" layoutY="434.0" onMouseClicked="#saveEditProfile" prefHeight="40.0" prefWidth="132.0" styleClass="saveButton" stylesheets="@../CSS/buttons.css" text="SAVE" textFill="#17c216" visible="false">
+               <font>
+                  <Font name="Impact" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="cancelEditProfileButton" alignment="CENTER" layoutX="496.0" layoutY="434.0" onMouseClicked="#cancelEditProfile" prefHeight="40.0" prefWidth="132.0" styleClass="cancelButton" stylesheets="@../CSS/buttons.css" text="CANCEL" textFill="#cd1010" visible="false">
+               <font>
+                  <Font name="Impact" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
          </children>
       </AnchorPane>
    </children>
