@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
 import Manager.model.User;
+import Manager.utility.ValidationUtility;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -146,18 +147,35 @@ public class ProfileController extends ShowScreenController {
             userPassword = userResult.getString("password");
         }
 
-        if (!txtOldPassword.getText().equals("") && !txtNewPassword.getText().equals("") && !txtConfirmPassword.getText().equals("")) {
+        if (!txtOldPassword.getText().equals("")
+                && !txtNewPassword.getText().equals("")
+                && !txtConfirmPassword.getText().equals("")) {
 
-            if (userPassword.equals(txtOldPassword.getText()) && txtNewPassword.getText().equals(txtConfirmPassword.getText())) {
+            if (userPassword.equals(txtOldPassword.getText())
+                    && txtNewPassword.getText().equals(txtConfirmPassword.getText())
+                    && !txtNewPassword.getText().equals(userPassword)) {
 
-                databaseHandler.editUserPassword(profileUsername.getText(), txtConfirmPassword.getText());
+                if (ValidationUtility.meetsPasswordFormat(txtNewPassword.getText())) {
 
-                popUpPane.setVisible(false);
-                editProfileButton.setVisible(true);
-                transactionHistoryButton.setVisible(true);
-                changePasswordButton.setVisible(true);
+                    databaseHandler.editUserPassword(profileUsername.getText(), txtConfirmPassword.getText());
 
-                showScreen(txtOldPassword, "/views/login.fxml");
+                    popUpPane.setVisible(false);
+                    editProfileButton.setVisible(true);
+                    transactionHistoryButton.setVisible(true);
+                    changePasswordButton.setVisible(true);
+
+                    showScreen(txtOldPassword, "/views/login.fxml");
+
+                } else {
+
+                    Shaker newPasswordShaker = new Shaker(txtNewPassword);
+                    Shaker confirmPasswordShaker = new Shaker(txtConfirmPassword);
+                    newPasswordShaker.shake();
+                    confirmPasswordShaker.shake();
+
+                }
+
+
 
             } else if (!userPassword.equals(txtOldPassword.getText())) {
 
@@ -168,6 +186,16 @@ public class ProfileController extends ShowScreenController {
 
                 Shaker newPasswordShaker = new Shaker(txtNewPassword);
                 Shaker confirmPasswordShaker = new Shaker(txtConfirmPassword);
+                newPasswordShaker.shake();
+                confirmPasswordShaker.shake();
+
+            } else if (txtNewPassword.getText().equals(txtConfirmPassword.getText())
+                    && txtNewPassword.getText().equals(userPassword)) {
+
+                Shaker oldPasswordShaker = new Shaker(txtOldPassword);
+                Shaker newPasswordShaker = new Shaker(txtNewPassword);
+                Shaker confirmPasswordShaker = new Shaker(txtConfirmPassword);
+                oldPasswordShaker.shake();
                 newPasswordShaker.shake();
                 confirmPasswordShaker.shake();
 
@@ -229,19 +257,40 @@ public class ProfileController extends ShowScreenController {
         user.setLastName(profileLastNameEdit.getText());
         user.setAddress(profileAddressEdit.getText());
 
-        databaseHandler.editUser(user);
+        if (ValidationUtility.meetsFirstNameFormat(profileFirstNameEdit.getText()) &&
+                ValidationUtility.meetsLastNameFormat(profileLastNameEdit.getText()) &&
+                ValidationUtility.meetsAddressFormat(profileAddressEdit.getText())) {
 
-        profileLabelsVisible(true);
-        profileEditTextFieldsVisible(false);
+            databaseHandler.editUser(user);
 
-        editProfileButton.setVisible(true);
-        transactionHistoryButton.setVisible(true);
-        changePasswordButton.setVisible(true);
+            profileLabelsVisible(true);
+            profileEditTextFieldsVisible(false);
 
-        cancelEditProfileButton.setVisible(false);
-        saveEditProfileButton.setVisible(false);
+            editProfileButton.setVisible(true);
+            transactionHistoryButton.setVisible(true);
+            changePasswordButton.setVisible(true);
 
-        initialize();
+            cancelEditProfileButton.setVisible(false);
+            saveEditProfileButton.setVisible(false);
+
+            initialize();
+
+        } else if ( ! ValidationUtility.meetsFirstNameFormat(profileFirstNameEdit.getText())) {
+
+            Shaker shaker = new Shaker(profileFirstNameEdit);
+            shaker.shake();
+
+        } else if ( ! ValidationUtility.meetsLastNameFormat(profileLastNameEdit.getText())) {
+
+            Shaker shaker = new Shaker(profileLastNameEdit);
+            shaker.shake();
+
+        } else if ( ! ValidationUtility.meetsAddressFormat(profileAddressEdit.getText())) {
+
+            Shaker shaker = new Shaker(profileAddressEdit);
+            shaker.shake();
+
+        }
 
     }
 

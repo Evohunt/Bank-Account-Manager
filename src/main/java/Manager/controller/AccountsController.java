@@ -3,6 +3,7 @@ package Manager.controller;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 import Manager.triplet.SimpleTriplet;
 import Manager.animations.Shaker;
@@ -10,6 +11,7 @@ import Manager.database.DatabaseHandler;
 import Manager.enums.Currency;
 import Manager.model.Account;
 import Manager.model.User;
+import Manager.utility.ValidationUtility;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
@@ -241,7 +243,7 @@ public class AccountsController extends ShowScreenController {
     @FXML
     public void confirmCreateAccount() throws SQLException {
 
-        if (accountBalanceAdd.getText().equals("")) {
+        if ( ! ValidationUtility.checkIfStringIsMoneyFormat(accountBalanceAdd.getText())) {
 
             Shaker shaker = new Shaker(accountBalanceAdd);
             shaker.shake();
@@ -297,11 +299,21 @@ public class AccountsController extends ShowScreenController {
     @FXML
     void addBalanceToAccount() throws SQLException, ClassNotFoundException {
 
-        databaseHandler.updateAccountBalance(addBalanceAccountName.getText(),
-                Double.parseDouble(addBalanceAmount.getText()));
-        addBalancePane.setVisible(false);
-        createAccountButton.setVisible(true);
-        initialize();
+        if (ValidationUtility.checkIfStringIsMoneyFormat(addBalanceAmount.getText())) {
+
+            databaseHandler.updateAccountBalance(addBalanceAccountName.getText(),
+                    Double.parseDouble(addBalanceAmount.getText()));
+            addBalancePane.setVisible(false);
+            createAccountButton.setVisible(true);
+            initialize();
+
+        } else {
+
+            Shaker shaker = new Shaker(addBalanceAmount);
+            shaker.shake();
+
+        }
+
     }
 
     @FXML
@@ -390,7 +402,9 @@ public class AccountsController extends ShowScreenController {
         while (accountsResult.next()) {
 
             triplet.setFirst(accountsResult.getString("accountName"));
-            triplet.setSecond(accountsResult.getString("accountBalance"));
+            double formattedBalance = Double.parseDouble(accountsResult.getString("accountBalance"));
+            DecimalFormat dec = new DecimalFormat("#0.00");
+            triplet.setSecond(dec.format(formattedBalance));
             triplet.setThird(accountsResult.getString("accountCurrency"));
             arrayOfTriplets[numberOfAccounts] = new SimpleTriplet<>(triplet);
             numberOfAccounts++;
