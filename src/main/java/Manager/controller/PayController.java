@@ -12,12 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PayController extends ShowScreenController {
 
@@ -181,10 +178,5 @@ public class PayController extends ShowScreenController {
 
     }
 
-    private void initUser(ResultSet resultSet) throws SQLException {
-
-
-
-    }
 
 }

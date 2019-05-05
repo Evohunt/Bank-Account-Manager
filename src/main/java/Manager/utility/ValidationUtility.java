@@ -1,5 +1,11 @@
 package Manager.utility;
 
+import Manager.database.DatabaseHandler;
+import Manager.model.User;
+
+import javax.xml.transform.Result;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -28,6 +34,23 @@ public class ValidationUtility {
 
     private static final int MAX_ADDRESS_LENGTH = 150;
     private static final int MIN_ADDRESS_LENGTH = 10;
+
+    public static boolean doesDatabaseContainAccount(String accountName) throws SQLException {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        ResultSet account = databaseHandler.getAccountsByName(accountName);
+        return account.next();
+    }
+
+    public static boolean doesAccountBelongToUser(User user, String accountName) throws SQLException {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        ResultSet account = databaseHandler.getAccountsByUser(user);
+        while (account.next()) {
+            if (accountName.equals(account.getString("accountName"))) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static boolean meetsPasswordFormat(String registerPassword) {
         boolean hasSpecialChar = false;
