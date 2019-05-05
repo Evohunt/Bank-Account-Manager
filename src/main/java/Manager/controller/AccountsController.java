@@ -5,9 +5,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import Manager.Triplet.SimpleTriplet;
-import Manager.animations.Fader;
 import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
 import Manager.enums.Currency;
@@ -156,6 +154,24 @@ public class AccountsController extends ShowScreenController {
     @FXML
     private Label deleteButton5;
 
+    @FXML
+    private Label addBalanceAccountName;
+
+    @FXML
+    private Label addBalanceAccountCurrency;
+
+    @FXML
+    private Label addBalanceConfirmButton;
+
+    @FXML
+    private Label addBalanceCancelButton;
+
+    @FXML
+    private TextField addBalanceAmount;
+
+    @FXML
+    private Pane addBalancePane;
+
     private DatabaseHandler databaseHandler;
     private User user;
 
@@ -299,28 +315,58 @@ public class AccountsController extends ShowScreenController {
     }
 
     @FXML
-    void promptAddBalance1(MouseEvent event) {
+    void addBalanceToAccount(MouseEvent event) throws SQLException, ClassNotFoundException {
+        databaseHandler.updateAccountBalance(addBalanceAccountName.getText(),
+                addBalanceAmount.getText());
+        addBalancePane.setVisible(false);
+        createAccountButton.setVisible(true);
+        initialize();
+    }
 
+    @FXML
+    void cancelAddBalance(MouseEvent event) {
+        addBalancePane.setVisible(false);
+        createAccountButton.setVisible(true);
+    }
+
+    @FXML
+    void promptAddBalance1(MouseEvent event) {
+        addBalanceAccountName.setText(accountName1.getText());
+        addBalanceAccountCurrency.setText(accountCurrency1.getText());
+        addBalancePane.setVisible(true);
+        createAccountButton.setVisible(false);
     }
 
     @FXML
     void promptAddBalance2(MouseEvent event) {
-
+        addBalanceAccountName.setText(accountName2.getText());
+        addBalanceAccountCurrency.setText(accountCurrency2.getText());
+        addBalancePane.setVisible(true);
+        createAccountButton.setVisible(false);
     }
 
     @FXML
     void promptAddBalance3(MouseEvent event) {
-
+        addBalanceAccountName.setText(accountName3.getText());
+        addBalanceAccountCurrency.setText(accountCurrency3.getText());
+        addBalancePane.setVisible(true);
+        createAccountButton.setVisible(false);
     }
 
     @FXML
     void promptAddBalance4(MouseEvent event) {
-
+        addBalanceAccountName.setText(accountName4.getText());
+        addBalanceAccountCurrency.setText(accountCurrency4.getText());
+        addBalancePane.setVisible(true);
+        createAccountButton.setVisible(false);
     }
 
     @FXML
     void promptAddBalance5(MouseEvent event) {
-
+        addBalanceAccountName.setText(accountName5.getText());
+        addBalanceAccountCurrency.setText(accountCurrency5.getText());
+        addBalancePane.setVisible(true);
+        createAccountButton.setVisible(false);
     }
 
     private void initAccountLabel(Pane pane, Label nameLabel, Label balanceLabel,

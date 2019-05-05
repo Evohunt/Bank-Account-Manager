@@ -230,4 +230,18 @@ public class DatabaseHandler extends Configs {
 
     }
 
+    public void updateAccountBalance(String accountName, String balance) throws SQLException, ClassNotFoundException {
+
+        String query = "UPDATE " + Const.ACCOUNTS_TABLE + " SET "
+                + Const.ACCOUNTS_BALANCE + " = ?"
+                + " WHERE (" + Const.ACCOUNTS_NAME + " = ?)";
+
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        preparedStatement.setString(1, balance);
+        preparedStatement.setString(2, accountName);
+
+        preparedStatement.executeUpdate();
+
+    }
+
 }

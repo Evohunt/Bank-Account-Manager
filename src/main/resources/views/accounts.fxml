@@ -289,6 +289,51 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Label>
+            <Pane fx:id="addBalancePane" layoutX="215.0" layoutY="100.0" prefHeight="319.0" prefWidth="574.0" styleClass="popUpPane" stylesheets="@../CSS/backgrounds.css" visible="false">
+               <children>
+                  <Label layoutX="28.0" layoutY="40.0" prefHeight="32.0" prefWidth="166.0" text="Account name:" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="72.0" prefHeight="32.0" prefWidth="166.0" text="Account currency:" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="addBalanceAccountName" layoutX="194.0" layoutY="40.0" prefHeight="32.0" prefWidth="258.0" text="Account name" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="addBalanceAccountCurrency" layoutX="194.0" layoutY="72.0" prefHeight="32.0" prefWidth="258.0" text="Account name" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="addBalanceConfirmButton" alignment="CENTER" layoutX="439.0" layoutY="250.0" onMouseClicked="#addBalanceToAccount" prefHeight="55.0" prefWidth="121.0" styleClass="saveButton" stylesheets="@../CSS/buttons.css" text="CONFIRM" textFill="#17c216">
+                     <font>
+                        <Font name="Impact" size="25.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="addBalanceCancelButton" alignment="CENTER" layoutX="308.0" layoutY="250.0" onMouseClicked="#cancelAddBalance" prefHeight="55.0" prefWidth="121.0" styleClass="cancelButton" stylesheets="@../CSS/buttons.css" text="CANCEL" textFill="#b81212">
+                     <font>
+                        <Font name="Impact" size="25.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <TextField fx:id="addBalanceAmount" layoutX="28.0" layoutY="160.0" prefHeight="32.0" prefWidth="212.0" promptText="Amount">
+                     <font>
+                        <Font name="Arial" size="17.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>
