@@ -2,5 +2,5 @@ package Manager.enums;
 
 public enum ServiceProvider {
 
-    VODAFONE, PAYPAL, TWITCH, TELEKOM, ENGIE
+    ORANGE, PAYPAL, TWITCH, TELEKOM, ENGIE
 }

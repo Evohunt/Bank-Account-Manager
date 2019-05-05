@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.PayController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.PayController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -88,8 +88,7 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="675.0" layoutY="209.0" prefHeight="40.0" prefWidth="111.0" />
-            <Label alignment="CENTER" layoutX="600.0" layoutY="357.0" prefHeight="55.0" prefWidth="150.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="PAY" textFill="WHITE">
+            <Label fx:id="payButton" alignment="CENTER" layoutX="600.0" layoutY="357.0" onMouseClicked="#payToService" prefHeight="55.0" prefWidth="150.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="PAY" textFill="WHITE">
                <font>
                   <Font name="Impact" size="25.0" />
                </font>
@@ -97,13 +96,38 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <ChoiceBox layoutX="404.0" layoutY="210.0" prefHeight="40.0" prefWidth="261.0" />
-            <TextField layoutX="404.0" layoutY="260.0" prefHeight="40.0" prefWidth="261.0">
+            <TextField fx:id="amountToPay" layoutX="404.0" layoutY="260.0" prefHeight="40.0" prefWidth="261.0">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </TextField>
-            <ChoiceBox layoutX="404.0" layoutY="160.0" prefHeight="40.0" prefWidth="261.0" />
+            <ComboBox fx:id="userAcccountsComboBox" layoutX="405.0" layoutY="160.0" prefHeight="40.0" prefWidth="260.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
+            <ComboBox fx:id="servicesComboBox" layoutX="405.0" layoutY="210.0" prefHeight="40.0" prefWidth="260.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
+            <Pane fx:id="payPopUpPane" layoutX="257.0" layoutY="143.0" prefHeight="192.0" prefWidth="482.0" styleClass="popUpPane" stylesheets="@../CSS/backgrounds.css" visible="false">
+               <children>
+                  <Label layoutX="101.0" layoutY="39.0" prefHeight="27.0" prefWidth="281.0" text="Transaction successful!" textFill="#33b50f">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="okButton" alignment="CENTER" layoutX="181.0" layoutY="99.0" onMouseClicked="#okPressed" prefHeight="55.0" prefWidth="121.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="OK" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="25.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>

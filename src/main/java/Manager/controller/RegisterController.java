@@ -2,11 +2,6 @@ package Manager.controller;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
 import Manager.model.User;
@@ -58,7 +53,7 @@ public class RegisterController extends ShowScreenController {
         ResultSet resultSet = databaseHandler.validateUser(new User(registerUsername.getText()));
         try {
             if (!resultSet.next()) {
-                if ( !ValidationUtility.meetsFirstNameFormat(registerFirstName.getText())) {
+                if ( ! ValidationUtility.meetsFirstNameFormat(registerFirstName.getText())) {
                     Shaker shaker = new Shaker(registerFirstName);
                     shaker.shake();
                 } else if ( ! ValidationUtility.meetsLastNameFormat(registerLastName.getText())) {
