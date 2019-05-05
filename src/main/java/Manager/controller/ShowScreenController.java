@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class ShowScreenController {
 
-    void showScreen(Node node, String filePath) {
+    public void showScreen(Node node, String filePath) {
 
         node.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();

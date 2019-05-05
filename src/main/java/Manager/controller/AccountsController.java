@@ -1,11 +1,10 @@
 package Manager.controller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
-import Manager.Triplet.SimpleTriplet;
+
+import Manager.triplet.SimpleTriplet;
 import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
 import Manager.enums.Currency;
@@ -17,16 +16,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
+
 public class AccountsController extends ShowScreenController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Label homeButton;
@@ -39,6 +32,9 @@ public class AccountsController extends ShowScreenController {
 
     @FXML
     private Label profileButton;
+
+    @FXML
+    private Label logoutButton;
 
     @FXML
     private Label createAccountButton;
@@ -59,6 +55,9 @@ public class AccountsController extends ShowScreenController {
     private ImageView addBalanceButton1;
 
     @FXML
+    private Label deleteButton1;
+
+    @FXML
     private Pane accountPane2;
 
     @FXML
@@ -72,6 +71,9 @@ public class AccountsController extends ShowScreenController {
 
     @FXML
     private ImageView addBalanceButton2;
+
+    @FXML
+    private Label deleteButton2;
 
     @FXML
     private Pane accountPane3;
@@ -89,6 +91,9 @@ public class AccountsController extends ShowScreenController {
     private ImageView addBalanceButton3;
 
     @FXML
+    private Label deleteButton3;
+
+    @FXML
     private Pane accountPane4;
 
     @FXML
@@ -102,6 +107,9 @@ public class AccountsController extends ShowScreenController {
 
     @FXML
     private ImageView addBalanceButton4;
+
+    @FXML
+    private Label deleteButton4;
 
     @FXML
     private Pane accountPane5;
@@ -119,6 +127,12 @@ public class AccountsController extends ShowScreenController {
     private ImageView addBalanceButton5;
 
     @FXML
+    private Label deleteButton5;
+
+    @FXML
+    private Pane createAccountPopUp;
+
+    @FXML
     private Label confirmCreateAccountButton;
 
     @FXML
@@ -131,28 +145,10 @@ public class AccountsController extends ShowScreenController {
     private ComboBox<String> accountCurrencyAdd;
 
     @FXML
-    private Pane createAccountPopUp;
-
-    @FXML
-    private Label logoutButton;
-
-    @FXML
     private Label lblMaxAccountsReached;
 
     @FXML
-    private Label deleteButton1;
-
-    @FXML
-    private Label deleteButton2;
-
-    @FXML
-    private Label deleteButton3;
-
-    @FXML
-    private Label deleteButton4;
-
-    @FXML
-    private Label deleteButton5;
+    private Pane addBalancePane;
 
     @FXML
     private Label addBalanceAccountName;
@@ -169,65 +165,49 @@ public class AccountsController extends ShowScreenController {
     @FXML
     private TextField addBalanceAmount;
 
-    @FXML
-    private Pane addBalancePane;
 
     private DatabaseHandler databaseHandler;
     private User user;
 
     @FXML
-    void deleteAccount1(MouseEvent event) throws SQLException, ClassNotFoundException {
+    public void deleteAccount1() throws SQLException, ClassNotFoundException {
         databaseHandler.deleteAccount(accountName1.getText());
         initialize();
     }
 
     @FXML
-    void deleteAccount2(MouseEvent event) throws SQLException, ClassNotFoundException {
+    public void deleteAccount2() throws SQLException, ClassNotFoundException {
         databaseHandler.deleteAccount(accountName2.getText());
         initialize();
     }
 
     @FXML
-    void deleteAccount3(MouseEvent event) throws SQLException, ClassNotFoundException {
+    public void deleteAccount3() throws SQLException, ClassNotFoundException {
         databaseHandler.deleteAccount(accountName3.getText());
         initialize();
     }
 
     @FXML
-    void deleteAccount4(MouseEvent event) throws SQLException, ClassNotFoundException {
+    public void deleteAccount4() throws SQLException, ClassNotFoundException {
         databaseHandler.deleteAccount(accountName4.getText());
         initialize();
     }
 
     @FXML
-    void deleteAccount5(MouseEvent event) throws SQLException, ClassNotFoundException {
+    public void deleteAccount5() throws SQLException, ClassNotFoundException {
         databaseHandler.deleteAccount(accountName5.getText());
         initialize();
     }
 
     @FXML
-    void logoutUser(MouseEvent event) {
+    public void logoutUser() {
 
         showScreen(logoutButton, "/views/startup.fxml");
 
     }
 
-    private void populateCurrencyComboBox() {
-
-        accountCurrencyAdd.setStyle("-fx-font-family: Arial");
-        accountCurrencyAdd.setStyle("-fx-font-size: 17");
-        accountCurrencyAdd.getItems().clear();
-        accountCurrencyAdd.getItems().addAll(
-                Currency.values()[0].toString(),
-                Currency.values()[1].toString(),
-                Currency.values()[2].toString(),
-                Currency.values()[3].toString()
-        );
-
-    }
-
     @FXML
-    void promptCreateAccount(MouseEvent event) throws SQLException {
+    public void promptCreateAccount() throws SQLException {
 
         int numberOfAccounts = 0;
         ResultSet accountsResult = databaseHandler.getAccountsByUser(user);
@@ -251,7 +231,7 @@ public class AccountsController extends ShowScreenController {
     }
 
     @FXML
-    void cancelCreateAccount(MouseEvent event) {
+    public void cancelCreateAccount() {
 
         createAccountButton.setVisible(true);
         createAccountPopUp.setVisible(false);
@@ -259,7 +239,7 @@ public class AccountsController extends ShowScreenController {
     }
 
     @FXML
-    void confirmCreateAccount(MouseEvent event) throws SQLException {
+    public void confirmCreateAccount() throws SQLException {
 
         if (accountBalanceAdd.getText().equals("")) {
 
@@ -287,110 +267,96 @@ public class AccountsController extends ShowScreenController {
     }
 
     @FXML
-    void gotoHomePage(MouseEvent event) {
+    public void gotoHomePage() {
 
         showScreen(homeButton, "/views/main.fxml");
 
     }
 
     @FXML
-    void gotoPayPage(MouseEvent event) {
+    public void gotoPayPage() {
 
         showScreen(homeButton, "/views/pay.fxml");
 
     }
 
     @FXML
-    void gotoProfilePage(MouseEvent event) {
+    public void gotoProfilePage() {
 
         showScreen(homeButton, "/views/profile.fxml");
 
     }
 
     @FXML
-    void gotoTransferPage(MouseEvent event) {
+    public void gotoTransferPage() {
 
         showScreen(homeButton, "/views/transfer.fxml");
 
     }
 
     @FXML
-    void addBalanceToAccount(MouseEvent event) throws SQLException, ClassNotFoundException {
+    void addBalanceToAccount() throws SQLException, ClassNotFoundException {
+
         databaseHandler.updateAccountBalance(addBalanceAccountName.getText(),
-                addBalanceAmount.getText());
+                Double.parseDouble(addBalanceAmount.getText()));
         addBalancePane.setVisible(false);
         createAccountButton.setVisible(true);
         initialize();
     }
 
     @FXML
-    void cancelAddBalance(MouseEvent event) {
+    void cancelAddBalance() {
         addBalancePane.setVisible(false);
         createAccountButton.setVisible(true);
     }
 
     @FXML
-    void promptAddBalance1(MouseEvent event) {
+    void promptAddBalance1() {
         addBalanceAccountName.setText(accountName1.getText());
         addBalanceAccountCurrency.setText(accountCurrency1.getText());
         addBalancePane.setVisible(true);
         createAccountButton.setVisible(false);
+        addBalanceAmount.setText("");
     }
 
     @FXML
-    void promptAddBalance2(MouseEvent event) {
+    void promptAddBalance2() {
         addBalanceAccountName.setText(accountName2.getText());
         addBalanceAccountCurrency.setText(accountCurrency2.getText());
         addBalancePane.setVisible(true);
         createAccountButton.setVisible(false);
+        addBalanceAmount.setText("");
     }
 
     @FXML
-    void promptAddBalance3(MouseEvent event) {
+    void promptAddBalance3() {
         addBalanceAccountName.setText(accountName3.getText());
         addBalanceAccountCurrency.setText(accountCurrency3.getText());
         addBalancePane.setVisible(true);
         createAccountButton.setVisible(false);
+        addBalanceAmount.setText("");
     }
 
     @FXML
-    void promptAddBalance4(MouseEvent event) {
+    void promptAddBalance4() {
         addBalanceAccountName.setText(accountName4.getText());
         addBalanceAccountCurrency.setText(accountCurrency4.getText());
         addBalancePane.setVisible(true);
         createAccountButton.setVisible(false);
+        addBalanceAmount.setText("");
     }
 
     @FXML
-    void promptAddBalance5(MouseEvent event) {
+    void promptAddBalance5() {
         addBalanceAccountName.setText(accountName5.getText());
         addBalanceAccountCurrency.setText(accountCurrency5.getText());
         addBalancePane.setVisible(true);
         createAccountButton.setVisible(false);
-    }
-
-    private void initAccountLabel(Pane pane, Label nameLabel, Label balanceLabel,
-                                  Label currencyLabel, SimpleTriplet data) {
-
-        pane.setVisible(true);
-        nameLabel.setText(data.getFirst().toString());
-        balanceLabel.setText(data.getSecond().toString());
-        currencyLabel.setText(data.getThird().toString());
-
-    }
-
-    private void resetAccountLabels() {
-
-        accountPane1.setVisible(false);
-        accountPane2.setVisible(false);
-        accountPane3.setVisible(false);
-        accountPane4.setVisible(false);
-        accountPane5.setVisible(false);
-
+        addBalanceAmount.setText("");
     }
 
     @FXML
-    void initialize() throws SQLException {
+    public void initialize() throws SQLException {
 
         user = new User();
         databaseHandler = new DatabaseHandler();
@@ -464,6 +430,40 @@ public class AccountsController extends ShowScreenController {
             }
 
         }
+
+    }
+
+    private void initAccountLabel(Pane pane, Label nameLabel, Label balanceLabel,
+                                  Label currencyLabel, SimpleTriplet data) {
+
+        pane.setVisible(true);
+        nameLabel.setText(data.getFirst().toString());
+        balanceLabel.setText(data.getSecond().toString());
+        currencyLabel.setText(data.getThird().toString());
+
+    }
+
+    private void resetAccountLabels() {
+
+        accountPane1.setVisible(false);
+        accountPane2.setVisible(false);
+        accountPane3.setVisible(false);
+        accountPane4.setVisible(false);
+        accountPane5.setVisible(false);
+
+    }
+
+    private void populateCurrencyComboBox() {
+
+        accountCurrencyAdd.setStyle("-fx-font-family: Arial");
+        accountCurrencyAdd.setStyle("-fx-font-size: 17");
+        accountCurrencyAdd.getItems().clear();
+        accountCurrencyAdd.getItems().addAll(
+                Currency.values()[0].toString(),
+                Currency.values()[1].toString(),
+                Currency.values()[2].toString(),
+                Currency.values()[3].toString()
+        );
 
     }
 }

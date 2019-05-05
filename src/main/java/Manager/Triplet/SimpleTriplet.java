@@ -1,4 +1,4 @@
-package Manager.Triplet;
+package Manager.triplet;
 
 public class SimpleTriplet<U, V, T> {
 

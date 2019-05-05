@@ -1,9 +1,7 @@
 package Manager.controller;
 
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
@@ -12,18 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 public class LoginController extends ShowScreenController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Label loginButton;
 
     @FXML
     private TextField loginUsername;
@@ -34,18 +22,21 @@ public class LoginController extends ShowScreenController {
     @FXML
     private Label cancelLoginButton;
 
-    private DatabaseHandler databaseHandler;
-    private static User user = new User();
+    private static User user;
+
+    static {
+        user = new User();
+    }
 
     @FXML
-    void cancelLogin(MouseEvent event) {
+    public void cancelLogin() {
         showScreen(cancelLoginButton, "/views/startup.fxml");
     }
 
     @FXML
-    void loginUser(MouseEvent event) {
+    public void loginUser() {
 
-        databaseHandler = new DatabaseHandler();
+        DatabaseHandler databaseHandler = new DatabaseHandler();
 
         if (loginUsername.getText().equals("")) {
             Shaker usernameShaker = new Shaker(loginUsername);
@@ -83,7 +74,7 @@ public class LoginController extends ShowScreenController {
     }
 
     @FXML
-    void initialize() {
+    public void initialize() {
 
 
     }

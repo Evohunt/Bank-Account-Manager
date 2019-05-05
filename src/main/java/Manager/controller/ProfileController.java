@@ -1,10 +1,8 @@
 package Manager.controller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
@@ -14,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class ProfileController extends ShowScreenController {
@@ -94,48 +91,42 @@ public class ProfileController extends ShowScreenController {
     private DatabaseHandler databaseHandler;
 
     @FXML
-    void logoutUser(MouseEvent event) {
+    public void logoutUser() {
 
         showScreen(logoutButton, "/views/startup.fxml");
 
     }
 
     @FXML
-    void gotoHomeScreen(MouseEvent event) {
+    public void gotoHomeScreen() {
 
         showScreen(accountsButton, "/views/main.fxml");
 
     }
 
     @FXML
-    void gotoPayScreen(MouseEvent event) {
+    public void gotoPayScreen() {
 
         showScreen(accountsButton, "/views/pay.fxml");
 
     }
 
     @FXML
-    void gotoTransferScreen(MouseEvent event) {
+    public void gotoTransferScreen() {
 
         showScreen(accountsButton, "/views/transfer.fxml");
 
     }
 
     @FXML
-    void gotoAccountsScreen(MouseEvent event) {
+    public void gotoAccountsScreen() {
 
         showScreen(accountsButton, "/views/accounts.fxml");
 
     }
 
-    private void resetPasswordFields() {
-        txtOldPassword.setText("");
-        txtNewPassword.setText("");
-        txtConfirmPassword.setText("");
-    }
-
     @FXML
-    void cancelPasswordChange(MouseEvent event) {
+    public void cancelPasswordChange() {
 
         popUpPane.setVisible(false);
         changePasswordButton.setVisible(true);
@@ -146,7 +137,7 @@ public class ProfileController extends ShowScreenController {
     }
 
     @FXML
-    void savePasswordChange(MouseEvent event) throws SQLException, ClassNotFoundException {
+    public void savePasswordChange() throws SQLException, ClassNotFoundException {
 
         String userPassword = "";
         ResultSet userResult = databaseHandler.getUserByUsername(new User(profileUsername.getText()));
@@ -196,7 +187,7 @@ public class ProfileController extends ShowScreenController {
     }
 
     @FXML
-    void promptChangePassword(MouseEvent event) {
+    public void promptChangePassword() {
 
         popUpPane.setVisible(true);
         changePasswordButton.setVisible(false);
@@ -207,7 +198,7 @@ public class ProfileController extends ShowScreenController {
     }
 
     @FXML
-    void cancelEditProfile(MouseEvent event) {
+    public void cancelEditProfile() {
 
         profileLabelsVisible(true);
         profileEditTextFieldsVisible(false);
@@ -222,7 +213,7 @@ public class ProfileController extends ShowScreenController {
     }
 
     @FXML
-    void saveEditProfile(MouseEvent event) throws SQLException, ClassNotFoundException {
+    public void saveEditProfile() throws SQLException, ClassNotFoundException {
 
         User user = new User();
         ResultSet userResult = databaseHandler.getUserByUsername(new User(profileUsername.getText()));
@@ -254,32 +245,8 @@ public class ProfileController extends ShowScreenController {
 
     }
 
-    private void profileLabelsVisible(boolean state) {
-
-        profileFirstName.setVisible(state);
-        profileLastName.setVisible(state);
-        profileAddress.setVisible(state);
-
-    }
-
-    private void profileEditTextFieldsVisible(boolean state) {
-
-        profileFirstNameEdit.setVisible(state);
-        profileLastNameEdit.setVisible(state);
-        profileAddressEdit.setVisible(state);
-
-    }
-
-    private void initEditTextFields() {
-
-        profileFirstNameEdit.setText(profileFirstName.getText());
-        profileLastNameEdit.setText(profileLastName.getText());
-        profileAddressEdit.setText(profileAddress.getText());
-
-    }
-
     @FXML
-    void promptEditProfile(MouseEvent event) {
+    public void promptEditProfile() {
 
         profileLabelsVisible(false);
         profileEditTextFieldsVisible(true);
@@ -294,14 +261,8 @@ public class ProfileController extends ShowScreenController {
 
     }
 
-    private void populateLabel(Label label, String string) {
-
-        label.setText(string);
-
-    }
-
     @FXML
-    void initialize() throws SQLException {
+    public void initialize() throws SQLException {
 
         databaseHandler = new DatabaseHandler();
         FXMLLoader loader = new FXMLLoader();
@@ -326,4 +287,41 @@ public class ProfileController extends ShowScreenController {
 
     }
 
+    private void profileLabelsVisible(boolean state) {
+
+        profileFirstName.setVisible(state);
+        profileLastName.setVisible(state);
+        profileAddress.setVisible(state);
+
+    }
+
+    private void profileEditTextFieldsVisible(boolean state) {
+
+        profileFirstNameEdit.setVisible(state);
+        profileLastNameEdit.setVisible(state);
+        profileAddressEdit.setVisible(state);
+
+    }
+
+    private void initEditTextFields() {
+
+        profileFirstNameEdit.setText(profileFirstName.getText());
+        profileLastNameEdit.setText(profileLastName.getText());
+        profileAddressEdit.setText(profileAddress.getText());
+
+    }
+
+    private void populateLabel(Label label, String string) {
+
+        label.setText(string);
+
+    }
+
+    private void resetPasswordFields() {
+
+        txtOldPassword.setText("");
+        txtNewPassword.setText("");
+        txtConfirmPassword.setText("");
+
+    }
 }

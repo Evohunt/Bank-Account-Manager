@@ -1,27 +1,9 @@
 package Manager.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 
 public class MainController extends ShowScreenController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Label accountsButton;
-
-    @FXML
-    private Label transferButton;
-
-    @FXML
-    private Label payButton;
 
     @FXML
     private Label profileButton;
@@ -30,42 +12,42 @@ public class MainController extends ShowScreenController {
     private Label logoutButton;
 
     @FXML
-    void logoutUser(MouseEvent event) {
+    public void logoutUser() {
 
         showScreen(logoutButton, "/views/startup.fxml");
 
     }
 
     @FXML
-    void gotoAccountsScreen(MouseEvent event) {
+    public void gotoAccountsScreen() {
 
         showScreen(profileButton, "/views/accounts.fxml");
 
     }
 
     @FXML
-    void gotoPayScreen(MouseEvent event) {
+    public void gotoPayScreen() {
 
         showScreen(profileButton, "/views/pay.fxml");
 
     }
 
     @FXML
-    void gotoTransferScreen(MouseEvent event) {
+    public void gotoTransferScreen() {
 
         showScreen(profileButton, "/views/transfer.fxml");
 
     }
 
     @FXML
-    void gotoProfileScreen(MouseEvent event) {
+    public void gotoProfileScreen() {
 
         showScreen(profileButton, "/views/profile.fxml");
 
     }
 
     @FXML
-    void initialize() {
+    public void initialize() {
 
     }
 }

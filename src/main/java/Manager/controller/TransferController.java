@@ -22,42 +22,42 @@ public class TransferController extends ShowScreenController {
     private Label logoutButton;
 
     @FXML
-    void logoutUser(MouseEvent event) {
+    public void logoutUser(MouseEvent event) {
 
         showScreen(logoutButton, "/views/startup.fxml");
 
     }
 
     @FXML
-    void gotoAccountsScreen(MouseEvent event) {
+    public void gotoAccountsScreen(MouseEvent event) {
 
         showScreen(accountsButton, "/views/accounts.fxml");
 
     }
 
     @FXML
-    void gotoHomeScreen(MouseEvent event) {
+    public void gotoHomeScreen(MouseEvent event) {
 
         showScreen(accountsButton, "/views/main.fxml");
 
     }
 
     @FXML
-    void gotoPayScreen(MouseEvent event) {
+    public void gotoPayScreen(MouseEvent event) {
 
         showScreen(accountsButton, "/views/pay.fxml");
 
     }
 
     @FXML
-    void gotoProfileScreen(MouseEvent event) {
+    public void gotoProfileScreen(MouseEvent event) {
 
         showScreen(accountsButton, "/views/profile.fxml");
 
     }
 
     @FXML
-    void initialize() {
+    public void initialize() {
 
 
     }

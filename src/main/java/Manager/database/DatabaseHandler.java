@@ -230,17 +230,46 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    public void updateAccountBalance(String accountName, String balance) throws SQLException, ClassNotFoundException {
+    public void updateAccountBalance(String accountName, Double balance) throws SQLException, ClassNotFoundException {
+
+        double oldBalance = 0;
+        ResultSet account = getAccountsByName(accountName);
+        if (account.next()) {
+            oldBalance = Double.parseDouble(account.getString("accountBalance"));
+        }
+        double finalBalance = oldBalance + balance;
 
         String query = "UPDATE " + Const.ACCOUNTS_TABLE + " SET "
                 + Const.ACCOUNTS_BALANCE + " = ?"
                 + " WHERE (" + Const.ACCOUNTS_NAME + " = ?)";
 
         PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
-        preparedStatement.setString(1, balance);
+        preparedStatement.setString(1, Double.toString(finalBalance));
         preparedStatement.setString(2, accountName);
 
         preparedStatement.executeUpdate();
+
+    }
+
+    public ResultSet getAccountsByName(String name) {
+
+        ResultSet resultSet = null;
+
+        String query = "SELECT * FROM " + Const.ACCOUNTS_TABLE + " WHERE "
+                + Const.ACCOUNTS_NAME + "=?";
+
+        try {
+
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+            preparedStatement.setString(1, name);
+
+            resultSet = preparedStatement.executeQuery();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return resultSet;
 
     }
 

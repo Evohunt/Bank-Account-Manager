@@ -26,43 +26,6 @@ public class Account {
 
     }
 
-    private String createAccountName() throws SQLException {
-
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        ResultSet accounts = databaseHandler.getAccountsByUser(user);
-        List<Integer> lastDigit = new ArrayList<>();
-        while (accounts.next()) {
-
-            String name = accounts.getString("accountName");
-            int accountNumber = Integer.parseInt(name.substring(name.length() - 1));
-            lastDigit.add(accountNumber);
-
-        }
-        StringBuilder stringBuilder = new StringBuilder("BAT");
-        for (int i = 0; i <= 4; i++) {
-            if (!lastDigit.contains(i)) {
-
-                LocalDate localDate = LocalDate.now();
-
-                int dayOfWeekNumber = localDate.getDayOfMonth();
-                int currentMonth = localDate.getMonthValue();
-                int currentYear = localDate.getYear();
-
-                stringBuilder.append(currentYear);
-                stringBuilder.append(currentMonth);
-                stringBuilder.append(dayOfWeekNumber);
-                stringBuilder.append(user.getUserId());
-                stringBuilder.append(i);
-
-                break;
-
-            }
-        }
-
-        return stringBuilder.toString();
-
-    }
-
     public String getName() {
         return name;
     }
@@ -101,6 +64,45 @@ public class Account {
 
     public void setAccountIndex(int accountIndex) {
         this.accountIndex = accountIndex;
+    }
+
+    private String createAccountName() throws SQLException {
+
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        ResultSet accounts = databaseHandler.getAccountsByUser(user);
+        List<Integer> lastDigit = new ArrayList<>();
+
+        while (accounts.next()) {
+            String name = accounts.getString("accountName");
+            int accountNumber = Integer.parseInt(name.substring(name.length() - 1));
+            lastDigit.add(accountNumber);
+
+        }
+
+        StringBuilder stringBuilder = new StringBuilder("BAT");
+
+        for (int i = 0; i <= 4; i++) {
+            if (!lastDigit.contains(i)) {
+
+                LocalDate localDate = LocalDate.now();
+
+                int dayOfWeekNumber = localDate.getDayOfMonth();
+                int currentMonth = localDate.getMonthValue();
+                int currentYear = localDate.getYear();
+
+                stringBuilder.append(currentYear);
+                stringBuilder.append(currentMonth);
+                stringBuilder.append(dayOfWeekNumber);
+                stringBuilder.append(user.getUserId());
+                stringBuilder.append(i);
+
+                break;
+
+            }
+        }
+
+        return stringBuilder.toString();
+
     }
 
 }
