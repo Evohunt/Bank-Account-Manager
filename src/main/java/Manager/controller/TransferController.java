@@ -3,7 +3,9 @@ package Manager.controller;
 import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
 import Manager.enums.ExchangeRate;
+import Manager.model.Transaction;
 import Manager.model.User;
+import Manager.utility.CurrencyUtility;
 import Manager.utility.ValidationUtility;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -103,10 +105,21 @@ public class TransferController extends ShowScreenController {
                 currentAccountComboBox.getSelectionModel().getSelectedIndex() != -1 &&
                 checkEnoughBalanceInAccount(sourceAccountName, Double.parseDouble(amountToTransfer.getText()))){
 
+            ResultSet accountCurrencyResult = databaseHandler.getCurrencyFromAccount(sourceAccountName);
+            String accountCurrency = "";
+            if (accountCurrencyResult.next()) {
+                accountCurrency = accountCurrencyResult.getString("accountCurrency");
+            }
+
+            Transaction transaction = new Transaction(sourceAccountName, destinationAccountName,
+                    Double.parseDouble(amountToTransfer.getText()), accountCurrency);
+
+            databaseHandler.createTransaction(transaction);
+
             databaseHandler.updateAccountBalance(sourceAccountName,
                     -1.0 * Double.parseDouble(amountToTransfer.getText()));
             databaseHandler.updateAccountBalance(destinationAccountName,
-                    getBalanceInDestinationCurrency(sourceAccountName, destinationAccountName,
+                    CurrencyUtility.getBalanceInDestinationCurrency(sourceAccountName, destinationAccountName,
                             Double.parseDouble(amountToTransfer.getText())));
 
             payPopUpPane.setVisible(true);
@@ -195,22 +208,6 @@ public class TransferController extends ShowScreenController {
 
     }
 
-    private double getBalanceInDestinationCurrency(String sourceAccount, String destinationAccount, double amount) throws SQLException {
-        String sourceAccountCurrency = "";
-        String destinationAccountCurrency = "";
-        ResultSet sourceAccountResult = databaseHandler.getAccountsByName(sourceAccount);
-        ResultSet destinationAccountResult = databaseHandler.getAccountsByName(destinationAccount);
-        if (sourceAccountResult.next()) {
-            sourceAccountCurrency = sourceAccountResult.getString("accountCurrency");
-        }
-        if (destinationAccountResult.next()) {
-            destinationAccountCurrency = destinationAccountResult.getString("accountCurrency");
-        }
 
-        String exchangeRateString = sourceAccountCurrency + "_" + destinationAccountCurrency;
-        ExchangeRate exchangeRate = ExchangeRate.valueOf(exchangeRateString);
-        return amount * exchangeRate.getRate();
-
-    }
 
 }

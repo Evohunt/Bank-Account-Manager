@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.ProfileController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.controller.ProfileController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -81,7 +81,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="transactionHistoryButton" alignment="CENTER" layoutX="531.0" layoutY="384.0" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="TRANSACTION HISTORY" textFill="WHITE">
+            <Label fx:id="transactionHistoryButton" alignment="CENTER" layoutX="531.0" layoutY="384.0" onMouseClicked="#gotoTransactionHistoryScreen" prefHeight="40.0" prefWidth="239.0" styleClass="regularButton" stylesheets="@../CSS/buttons.css" text="TRANSACTION HISTORY" textFill="WHITE">
                <font>
                   <Font name="Impact" size="22.0" />
                </font>

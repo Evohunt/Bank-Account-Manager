@@ -92,6 +92,11 @@ public class ProfileController extends ShowScreenController {
     private DatabaseHandler databaseHandler;
 
     @FXML
+    void gotoTransactionHistoryScreen() {
+        showScreen(transactionHistoryButton, "/views/transaction_history.fxml");
+    }
+
+    @FXML
     public void logoutUser() {
 
         showScreen(logoutButton, "/views/startup.fxml");

@@ -4,6 +4,7 @@ public class Const {
 
     static final String USERS_TABLE = "users";
     static final String ACCOUNTS_TABLE = "accounts";
+    static final String TRANSACTIONS_TABLE = "transactions";
 
     // USERS Table Column Names
     static final String USERS_ID = "userid";
@@ -20,6 +21,14 @@ public class Const {
     static final String ACCOUNTS_BALANCE = "accountBalance";
     static final String ACCOUNTS_CURRENCY = "accountCurrency";
     static final String ACCOUNTS_USERID = "accountUserid";
+
+    // TRANSACTIONS Table Column Names
+    static final String TRANSACTIONS_ID = "transactionid";
+    static final String TRANSACTION_SOURCE_ACCOUNT = "sourceAccount";
+    static final String TRANSACTION_DESTINATION_ACCOUNT = "destinationAccount";
+    static final String TRANSACTION_AMOUNT = "amount";
+    static final String TRANSACTION_CURRENCY = "currency";
+    static final String TRANSACTION_DATE = "transactionDate";
 
 
 

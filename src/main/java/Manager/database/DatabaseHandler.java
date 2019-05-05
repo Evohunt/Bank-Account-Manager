@@ -1,6 +1,7 @@
 package Manager.database;
 
 import Manager.model.Account;
+import Manager.model.Transaction;
 import Manager.model.User;
 
 import java.sql.*;
@@ -263,6 +264,75 @@ public class DatabaseHandler extends Configs {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
             preparedStatement.setString(1, name);
 
+            resultSet = preparedStatement.executeQuery();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return resultSet;
+
+    }
+
+    public void createTransaction(Transaction transaction) {
+
+        String insert = "INSERT INTO " + Const.TRANSACTIONS_TABLE
+                + "(" + Const.TRANSACTION_SOURCE_ACCOUNT
+                + ", " + Const.TRANSACTION_DESTINATION_ACCOUNT
+                + ", " + Const.TRANSACTION_AMOUNT
+                + ", " + Const.TRANSACTION_CURRENCY
+                + ", " + Const.TRANSACTION_DATE
+                + ")" + " VALUES(?, ?, ?, ?, ?)";
+
+        try {
+
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setString(1, transaction.getSourceAccount());
+            preparedStatement.setString(2, transaction.getDestinationAccount());
+            preparedStatement.setString(3, Double.toString(transaction.getAmount()));
+            preparedStatement.setString(4, transaction.getCurrency());
+            preparedStatement.setString(5, transaction.getTransactionDate());
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public ResultSet getCurrencyFromAccount(String accountName) {
+
+        ResultSet resultSet = null;
+
+        String query = "SELECT " + Const.ACCOUNTS_CURRENCY+ " FROM " + Const.ACCOUNTS_TABLE + " WHERE "
+                + Const.ACCOUNTS_NAME + "=?";
+
+        try {
+
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+            preparedStatement.setString(1, accountName);
+
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return resultSet;
+
+    }
+
+    public ResultSet getTransactionsDescending() {
+
+        ResultSet resultSet = null;
+
+        String query = "SELECT * FROM " + Const.TRANSACTIONS_TABLE + " ORDER BY "
+                + Const.TRANSACTIONS_ID + " DESC";
+
+        try {
+
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
         } catch (SQLException | ClassNotFoundException e) {

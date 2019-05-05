@@ -3,6 +3,7 @@ package Manager.controller;
 import Manager.animations.Shaker;
 import Manager.database.DatabaseHandler;
 import Manager.enums.ServiceProvider;
+import Manager.model.Transaction;
 import Manager.model.User;
 import Manager.utility.ValidationUtility;
 import javafx.fxml.FXML;
@@ -98,6 +99,19 @@ public class PayController extends ShowScreenController {
             }
 
             if (Double.parseDouble(amountToPay.getText()) <= accountBalance) {
+
+                ResultSet accountCurrencyResult = databaseHandler.getCurrencyFromAccount(accountName);
+                String accountCurrency = "";
+                if (accountCurrencyResult.next()) {
+                    accountCurrency = accountCurrencyResult.getString("accountCurrency");
+                }
+
+                String serviceName = servicesComboBox.getSelectionModel().getSelectedItem();
+                Transaction transaction = new Transaction(accountName, serviceName,
+                        Double.parseDouble(amountToPay.getText()), accountCurrency);
+
+                databaseHandler.createTransaction(transaction);
+
                 databaseHandler.updateAccountBalance(accountName, -1.0 * Double.parseDouble(amountToPay.getText()));
                 amountToPay.setText("");
                 payPopUpPane.setVisible(true);
